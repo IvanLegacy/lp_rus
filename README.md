@@ -5,16 +5,14 @@ project/
 +--assets/                    # файлы проекта до сборки
    +--img/                    # изображения до сжатия
    +--fonts/                  # шрифты
-   +--sass/                   # sass
-   ¦  +--base/           
-   ¦  ¦  +--components/       # блоки sass, библиотеки
-   ¦  ¦  +--mixins/           # миксины sass
+   +--sass/                   # sass    
+   ¦  +--components/          # блоки sass, библиотеки
+   ¦  +--mixins/              # миксины sass
    ¦  +--variables.scss       # переменные sass
    ¦  +--main.scss            # @include components, vendor
    +--js/                     # js
-   ¦  +--base/
-   ¦  ¦  +--vendor/           # e.g. JQuery
-   ¦  ¦  +--components/       # прочие плагины
+   ¦  +--vendor/              # e.g. JQuery
+   ¦  +--components/          # прочие плагины
    ¦  +--main.js
    +--svg/
    +--pages/                  # html
