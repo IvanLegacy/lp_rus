@@ -31,7 +31,7 @@ const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV == 'developm
 // all paths
 const path = {
 	assets: {
-		fonts: 	'assets/fonts/',
+		fonts: 	'assets/fonts/*',
 		img: 	'assets/img/**/*',
 		js: 	'assets/js/**/*',
 		pages: 	'assets/pages/*.html',
@@ -51,7 +51,8 @@ const path = {
 		pages: 	'assets/pages/**/*.html',
 		scss: 	'assets/scss/**/*.scss',
 		svg: 	'assets/svg/*.svg',
-		img: 	'assets/img/**/*.*'
+		img: 	'assets/img/**/*.*',
+		fonts: 	'assets/fonts/**/*.*'
 	}
 };
 
@@ -107,6 +108,12 @@ gulp.task('dev:img', function(){
 			interlaced: true
 		}))
 		.pipe(gulp.dest(path.build.img));
+});
+
+// assembly fonts
+gulp.task('dev:fonts', function(){
+	return gulp.src(path.assets.fonts)
+		.pipe(gulp.dest(path.build.fonts));
 });
 
 // assembly svg 
@@ -165,7 +172,8 @@ gulp.task('dev', gulp.parallel(
 	'dev:js',
 	'dev:img',
 	'dev:html',
-	'dev:svg'
+	'dev:svg',
+	'dev:fonts'
 ));
 
 // delete build directory
@@ -180,6 +188,7 @@ gulp.task('watch', function(){
 	gulp.watch(path.watch.svg, gulp.series('dev:svg'));
 	gulp.watch(path.watch.js, gulp.series('dev:js'));
 	gulp.watch(path.watch.img, gulp.series('dev:img'));
+	gulp.watch(path.watch.fonts, gulp.series('dev:fonts'));
 });
 
 // default task
