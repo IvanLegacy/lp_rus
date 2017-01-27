@@ -1,0 +1,37 @@
+{
+  "name": "empty_frontend_project_structure",
+  "version": "1.0.0",
+  "description": "``` ruby\r project/\r +--assets/                    # файлы проекта до сборки\r    +--img/                    # изображения до сжатия\r    +--fonts/                  # шрифты\r    +--sass/                   # sass    \r    ¦  +--components/          # блоки sass, библиотеки\r    ¦  +--mixins/              # миксины sass\r    ¦  +--variables.scss       # переменные sass\r    ¦  +--main.scss            # @include components, vendor\r    +--js/                     # js\r    ¦  +--vendor/              # e.g. JQuery\r    ¦  +--components/          # прочие плагины\r    ¦  +--main.js\r    +--svg/\r    +--pages/                  # html\r       +--/blocks              # повторяющиеся блоки (header, footer, ...)\r       +--index.html           # html\r       +--...                 \r +--build/                     # файлы проекта после сборки\r    +--css/               \r    ¦  +--styles.min.css       # минимизированный css\r    +--js/\r    ¦  +--custom.min.js        # минимизированный js\r    +--img/\r    ¦  +--svg/                 # цельный файл svg\r    +--fonts/                  # шрифты\r    +--index.html              # index.html\r    +--...                     # тут же остальные html файлы после сборки\r +--gulpfile.js           \r +--package.json\r +--.gitignore                 # ignore node_modules | ignore build\r ```",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nazar9505/empty_frontend_project_structure.git"
+  },
+  "author": "nazar9505",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nazar9505/empty_frontend_project_structure/issues"
+  },
+  "homepage": "https://github.com/nazar9505/empty_frontend_project_structure#readme",
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-sass": "*",
+    "gulp-autoprefixer": "*",
+    "gulp-sourcemaps": "*",
+    "gulp-rename": "*",
+    "gulp-changed": "*",
+    "gulp-if": "*",
+    "gulp-jsmin": "*",
+    "gulp-concat": "*",
+    "gulp-imagemin": "*",
+    "gulp-file-include": "*",
+    "gulp-svg-sprite": "*",
+    "gulp-svg2string": "*",
+    "gulp-connect": "*",
+    "del": "*",
+    "bower": "*"
+  }
+}
