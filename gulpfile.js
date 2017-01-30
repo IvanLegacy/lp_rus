@@ -91,7 +91,6 @@ gulp.task('dev:js', function(){
 // assembly html
 gulp.task('dev:html', function() {
 	return gulp.src(path.assets.pages)
-		.pipe(changed(path.build.base))
 		.pipe(fileinclude({
 			prefix: '@@',
 			basepath: '@file'
