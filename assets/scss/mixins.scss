@@ -1,0 +1,22 @@
+/**
+
+	TODO:
+	- mixins.js
+
+ */
+
+
+@mixin media($media) {
+	@if $media == xs {
+		@media #{$gl-xs} { @content; }
+	}
+	@else if $media == sm {
+		@media #{$gl-sm} { @content; }
+	}
+	@else if $media == md {
+		@media #{$gl-md} { @content; }
+	}
+	@else if $media == lg {
+		@media #{$gl-lg} { @content; }
+	}
+}
