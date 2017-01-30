@@ -68,7 +68,7 @@ gulp.task('dev:scss', function(){
 	return gulp.src(path.assets.scss)
 		.pipe(changed(path.build.css))
 		.pipe(gulpif(isDevelopment, sourcemaps.init()))
-		.pipe(sass())
+		.pipe(sass().on('error', sass.logError))
 		.pipe(autoprefixer())
 		.pipe(concat('styles.css'))
 		.pipe(rename({ suffix: '.min' }))
