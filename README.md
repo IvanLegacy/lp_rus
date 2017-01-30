@@ -5,9 +5,10 @@ project/
 +--assets/                    # файлы проекта до сборки
    +--img/                    # изображения до сжатия
    +--fonts/                  # шрифты
-   +--sass/                   # sass    
+   +--sass/                   # sass        
+   ¦  +--vendor/              # библиотеки, reset.css
    ¦  +--components/          # блоки sass, библиотеки
-   ¦  +--mixins/              # миксины sass
+   ¦  +--mixins.scss          # миксины sass
    ¦  +--variables.scss       # переменные sass
    ¦  +--main.scss            # @include components, vendor
    +--js/                     # js
@@ -16,9 +17,10 @@ project/
    ¦  +--main.js
    +--svg/
    +--pages/                  # html
-      +--/blocks              # повторяющиеся блоки (header, footer, ...)
-      +--index.html           # html
-      +--...                 
+   ¦  +--/blocks              # повторяющиеся блоки (header, footer, ...)
+   ¦     +--demomenu.html     # демо меню со всеми страеницами и ui kit
+   ¦  +--index.html           # html
+   ¦  +--...                 
 +--build/                     # файлы проекта после сборки
    +--css/               
    ¦  +--styles.min.css       # минимизированный css
