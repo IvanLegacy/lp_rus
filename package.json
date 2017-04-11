@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/nazar9505/empty_frontend_project_structure#readme",
   "devDependencies": {
-    "gulp": "*",
+    "gulp": "gulpjs/gulp.git#4.0",
     "gulp-sass": "*",
     "gulp-autoprefixer": "*",
     "gulp-sourcemaps": "*",
@@ -31,7 +31,8 @@
     "gulp-svg-sprite": "*",
     "gulp-svg2string": "*",
     "gulp-connect": "*",
+    "gulp-livereload": "*",
     "del": "*",
-    "bower": "*"
+    "bower": "*",
   }
 }
