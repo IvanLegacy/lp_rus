@@ -21,8 +21,8 @@ const concat 		= require('gulp-concat');
 const imagemin 		= require('gulp-imagemin');
 const fileinclude 	= require('gulp-file-include');
 const svg 			= require('gulp-svg-sprite');
-const svg2string 	= require('gulp-svg2string');
 const connect 		= require('gulp-connect');
+const livereload	= require('gulp-livereload');
 const del 			= require('del');
 
 // is development
@@ -33,7 +33,7 @@ const path = {
 	assets: {
 		fonts: 	'assets/fonts/*',
 		img: 	'assets/img/**/*',
-		js: 	'assets/js/**/*',
+		js: 	'assets/js/',
 		pages: 	'assets/pages/*.html',
 		scss: 	'assets/scss/main.scss',
 		svg: 	'assets/svg/*.svg',
@@ -73,15 +73,20 @@ gulp.task('dev:scss', function(){
 		.pipe(concat('styles.css'))
 		.pipe(rename({ suffix: '.min' }))
 		.pipe(gulpif(isDevelopment, sourcemaps.write()))
-		.pipe(gulp.dest(path.build.css));
+		.pipe(gulp.dest(path.build.css))
+		.pipe(livereload());
 });
 
 // assembly js
 gulp.task('dev:js', function(){
-	return gulp.src(path.assets.js)
+	return gulp.src([
+			path.assets.js+'vendor/jquery.min.js',
+			path.assets.js+'components/owl.carousel.min.js',
+			path.assets.js+'main.js',
+		])
 		.pipe(changed(path.build.js))
 		.pipe(gulpif(isDevelopment, sourcemaps.init()))
-		.pipe(jsmin())
+		.pipe(gulpif(!isDevelopment, jsmin()))
 		.pipe(concat('custom.js'))
 		.pipe(rename({ suffix: '.min' }))
 		.pipe(gulpif(isDevelopment, sourcemaps.write()))
@@ -95,7 +100,8 @@ gulp.task('dev:html', function() {
 			prefix: '@@',
 			basepath: '@file'
 		}))
-		.pipe(gulp.dest(path.build.base));
+		.pipe(gulp.dest(path.build.base))
+		.pipe(livereload());
 });
 
 // assembly images
@@ -147,11 +153,9 @@ gulp.task('dev:svg', function(){
 	    }
 	};
     return gulp.src(path.assets.svg)
-		.pipe(changed(path.assets.svg))
+	    .pipe(changed(path.build.img))
         .pipe(svg(svgConfig))
-        .pipe(gulp.dest(path.build.img))
-		.pipe(svg2string())
-		.pipe(gulp.dest(path.build.img));
+        .pipe(gulp.dest(path.build.img));
 });
 
 /*=====  End of dev tasks  ======*/
@@ -168,11 +172,11 @@ gulp.task('server', function() {
 // task dev
 gulp.task('dev', gulp.parallel(
 	'dev:scss',
+	'dev:svg',
 	'dev:js',
 	'dev:img',
-	'dev:html',
-	'dev:svg',
-	'dev:fonts'
+	'dev:fonts',
+	'dev:html'
 ));
 
 // delete build directory
@@ -182,12 +186,13 @@ gulp.task('clean', function (){
 
 // watch tasks
 gulp.task('watch', function(){
+	livereload.listen();
 	gulp.watch(path.watch.scss, gulp.series('dev:scss'));
+	gulp.watch(path.watch.fonts, gulp.series('dev:fonts'));
 	gulp.watch(path.watch.pages, gulp.series('dev:html'));
-	gulp.watch(path.watch.svg, gulp.series('dev:svg'));
+	gulp.watch(path.watch.svg, gulp.series('dev:svg', 'dev:html'));
 	gulp.watch(path.watch.js, gulp.series('dev:js'));
 	gulp.watch(path.watch.img, gulp.series('dev:img'));
-	gulp.watch(path.watch.fonts, gulp.series('dev:fonts'));
 });
 
 // default task
