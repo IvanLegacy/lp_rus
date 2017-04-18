@@ -1,4 +1,4 @@
-# Empty frontent project structure
+# Empty frontend project structure
 
 ## Установка npm пакетов
 
@@ -34,17 +34,17 @@ project/
    ¦  +--main.js
    +--svg/
    +--pages/                  # html
-   ¦  +--/blocks              # повторяющиеся блоки (header, footer, ...)
-   ¦     +--demomenu.html     # демо меню со всеми страеницами и ui kit
+   ¦  +--/blocks              # partial блоки (header, footer, etc.)
+   ¦     +--demomenu.html     # демо меню со всеми страеницами и uikit
    ¦  +--index.html           # html
    ¦  +--...                 
 +--build/                     # файлы проекта после сборки
    +--css/               
-   ¦  +--styles.min.css       # минимизированный css
+   ¦  +--styles.min.css       # min css
    +--js/
-   ¦  +--custom.min.js        # минимизированный js
+   ¦  +--custom.min.js        # min js
    +--img/
-   ¦  +--svg/                 # цельный файл svg
+   ¦  +--svg/                 # sprite svg
    +--fonts/                  # шрифты
    +--index.html              # index.html
    +--...                     # тут же остальные html файлы после сборки
