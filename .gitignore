@@ -1,5 +1,6 @@
 .htaccess
 build/
+!build/img/svg/svg.sprite
 node_modules/
 bower_components/
 .idea/

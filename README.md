@@ -1,5 +1,23 @@
 # Empty frontent project structure
 
+## Установка npm пакетов
+
+```bash
+npm install
+```
+
+## Если проект собирается первый раз, выполнять
+
+```bash
+gulp init
+```
+
+## В последующие разы выполнять
+
+```bash
+gulp
+```
+
 ``` ruby
 project/
 +--assets/                    # файлы проекта до сборки
