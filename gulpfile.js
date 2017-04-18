@@ -68,8 +68,8 @@ const path = {
 		css: {
 			path: 'assets/scss/vendor/',
 			files: [
-				'node_modules/fullpage.js/dist/jquery.fullpage.css',
-				'node_modules/fullpage.js/dist/jquery.fullpage.min.css'
+				'node_modules/fullpage.js/dist/owl.carousel.min.css',
+				'node_modules/fullpage.js/dist/jquery.fullpage.css'
 			]
 		}
 	}
