@@ -23,6 +23,7 @@ const fileinclude 	= require('gulp-file-include');
 const svg 			= require('gulp-svg-sprite');
 const connect 		= require('gulp-connect');
 const livereload	= require('gulp-livereload');
+const addsrc 		= require('gulp-add-src');
 const del 			= require('del');
 
 // is development
@@ -53,6 +54,24 @@ const path = {
 		svg: 	'assets/svg/*.svg',
 		img: 	'assets/img/**/*.*',
 		fonts: 	'assets/fonts/**/*.*'
+	},
+	modules: {
+		js: {
+			path: 'assets/js/vendor/',
+			files: [
+				'node_modules/jquery/dist/jquery.min.js',
+				'node_modules/owl.carousel/dist/owl.carousel.min.js',
+				'node_modules/fullpage.js/dist/jquery.fullpage.min.js',
+				'node_modules/fullpage.js/vendors/scrolloverflow.min.js'
+			]
+		},
+		css: {
+			path: 'assets/scss/vendor/',
+			files: [
+				'node_modules/fullpage.js/dist/jquery.fullpage.css',
+				'node_modules/fullpage.js/dist/jquery.fullpage.min.css'
+			]
+		}
 	}
 };
 
@@ -81,7 +100,9 @@ gulp.task('dev:scss', function(){
 gulp.task('dev:js', function(){
 	return gulp.src([
 			path.assets.js+'vendor/jquery.min.js',
-			path.assets.js+'components/owl.carousel.min.js',
+			path.assets.js+'vendor/owl.carousel.min.js',
+			path.assets.js+'vendor/scrolloverflow.min.js',
+			path.assets.js+'vendor/jquery.fullPage.min.js',
 			path.assets.js+'main.js',
 		])
 		.pipe(changed(path.build.js))
@@ -182,7 +203,25 @@ gulp.task('dev', gulp.parallel(
 // delete build directory
 gulp.task('clean', function (){
 	return del(path.build.base);
+}); 
+
+// copy js files
+gulp.task('copy:js', function(){
+	return gulp.src(path.modules.js.files)
+		.pipe(gulp.dest(path.modules.js.path))
 });
+
+// copy css files
+gulp.task('copy:css', function(){
+	return gulp.src(path.modules.css.files)
+		.pipe(gulp.dest(path.modules.css.path));
+});
+
+// copy node modules to assets
+gulp.task('copy', gulp.series(
+	'copy:js',
+	'copy:css'
+));
 
 // watch tasks
 gulp.task('watch', function(){
@@ -194,6 +233,13 @@ gulp.task('watch', function(){
 	gulp.watch(path.watch.js, gulp.series('dev:js'));
 	gulp.watch(path.watch.img, gulp.series('dev:img'));
 });
+
+// init task (first run)
+gulp.task('init', gulp.series(
+	'copy',
+	'dev',
+	gulp.parallel('watch', 'server')
+));
 
 // default task
 gulp.task('default', gulpif(isDevelopment,

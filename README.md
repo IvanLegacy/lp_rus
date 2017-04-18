@@ -12,8 +12,7 @@ project/
    ¦  +--variables.scss       # переменные sass
    ¦  +--main.scss            # @include components, vendor
    +--js/                     # js
-   ¦  +--vendor/              # e.g. JQuery
-   ¦  +--components/          # прочие плагины
+   ¦  +--components/          # плагины
    ¦  +--main.js
    +--svg/
    +--pages/                  # html
