@@ -32,7 +32,6 @@
     "gulp-svg2string": "*",
     "gulp-connect": "*",
     "gulp-livereload": "*",
-    "gulp-file": "*",
     "del": "*",
     "bower": "*",
 
