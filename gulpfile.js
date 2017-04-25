@@ -107,8 +107,8 @@ gulp.task('dev:js', function(){
 		])
 		.pipe(changed(path.build.js))
 		.pipe(gulpif(isDevelopment, sourcemaps.init()))
-		.pipe(gulpif(!isDevelopment, jsmin()))
 		.pipe(concat('custom.js'))
+		.pipe(gulpif(!isDevelopment, jsmin()))
 		.pipe(rename({ suffix: '.min' }))
 		.pipe(gulpif(isDevelopment, sourcemaps.write()))
 		.pipe(gulp.dest(path.build.js))
@@ -193,11 +193,13 @@ gulp.task('server', function() {
 // task dev
 gulp.task('dev', gulp.parallel(
 	'dev:scss',
-	'dev:svg',
 	'dev:js',
 	'dev:img',
 	'dev:fonts',
-	'dev:html'
+	gulp.series(
+		'dev:svg',
+		'dev:html'
+	)
 ));
 
 // delete build directory
