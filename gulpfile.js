@@ -38,6 +38,7 @@ const path = {
 		pages: 	'assets/pages/*.html',
 		scss: 	'assets/scss/main.scss',
 		svg: 	'assets/svg/*.svg',
+		video: 	'assets/video/**/*'
 	},
 	build: {
 		base:	'build/',
@@ -46,6 +47,7 @@ const path = {
 		js: 	'build/js/',
 		css: 	'build/css/',
 		svg: 	'build/img/svg',
+		video: 	'build/video/'
 	},
 	watch: {
 		js: 	'assets/js/**/*.js',
@@ -53,7 +55,8 @@ const path = {
 		scss: 	'assets/scss/**/*.scss',
 		svg: 	'assets/svg/*.svg',
 		img: 	'assets/img/**/*.*',
-		fonts: 	'assets/fonts/**/*.*'
+		fonts: 	'assets/fonts/**/*.*',
+		video: 	'assets/video/**/*'
 	},
 	modules: {
 		js: {
@@ -68,12 +71,13 @@ const path = {
 		css: {
 			path: 'assets/scss/vendor/',
 			files: [
-				'node_modules/fullpage.js/dist/assets/owl.carousel.min.css',
+				'node_modules/fullpage.js/dist/owl.carousel.min.css',
 				'node_modules/fullpage.js/dist/jquery.fullpage.css'
 			]
 		}
 	}
 };
+
 
 
 
@@ -136,6 +140,13 @@ gulp.task('dev:img', function(){
 		.pipe(gulp.dest(path.build.img));
 });
 
+// assembly video
+gulp.task('dev:video', function(){
+	return gulp.src(path.assets.video)
+		.pipe(changed(path.build.video))
+		.pipe(gulp.dest(path.build.video));
+})
+
 // assembly fonts
 gulp.task('dev:fonts', function(){
 	return gulp.src(path.assets.fonts)
@@ -195,6 +206,7 @@ gulp.task('dev', gulp.parallel(
 	'dev:scss',
 	'dev:js',
 	'dev:img',
+	'dev:video',
 	'dev:fonts',
 	gulp.series(
 		'dev:svg',
@@ -233,6 +245,7 @@ gulp.task('watch', function(){
 	gulp.watch(path.watch.pages, gulp.series('dev:html'));
 	gulp.watch(path.watch.svg, gulp.series('dev:svg', 'dev:html'));
 	gulp.watch(path.watch.js, gulp.series('dev:js'));
+	gulp.watch(path.watch.video, gulp.series('dev:video'));
 	gulp.watch(path.watch.img, gulp.series('dev:img'));
 });
 

@@ -6,22 +6,35 @@
 npm install
 ```
 
-## Если проект собирается первый раз, выполнять
+## При сборке на production выполнить
 
+(Windows)
 ```bash
-gulp init
+set NODE_ENV=prod && gulp 
 ```
 
-## В последующие разы выполнять
+(Linux)
+```bash
+NODE_ENV=prod && gulp
+```
+
+## Для dev сборки выполнить  
 
 ```bash
 gulp
+```
+
+## Если проект пустой, выполнить
+
+```bash
+gulp init
 ```
 
 ``` ruby
 project/
 +--assets/                    # файлы проекта до сборки
    +--img/                    # изображения до сжатия
+   +--video/                  # видео
    +--fonts/                  # шрифты
    +--sass/                   # sass        
    ¦  +--vendor/              # библиотеки, reset.css
@@ -45,6 +58,7 @@ project/
    ¦  +--custom.min.js        # min js
    +--img/
    ¦  +--svg/                 # sprite svg
+   +--video/                  # видео
    +--fonts/                  # шрифты
    +--index.html              # index.html
    +--...                     # тут же остальные html файлы после сборки
