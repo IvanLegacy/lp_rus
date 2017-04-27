@@ -14,7 +14,6 @@ const sass 			= require('gulp-sass');
 const autoprefixer 	= require('gulp-autoprefixer');
 const sourcemaps 	= require('gulp-sourcemaps');
 const rename 		= require('gulp-rename');
-const changed 		= require('gulp-changed');
 const gulpif 		= require('gulp-if');
 const jsmin 		= require('gulp-jsmin');
 const concat 		= require('gulp-concat');
@@ -109,13 +108,13 @@ gulp.task('dev:js', function(){
 			path.assets.js+'vendor/jquery.fullPage.min.js',
 			path.assets.js+'main.js',
 		])
-		.pipe(changed(path.build.js))
 		.pipe(gulpif(isDevelopment, sourcemaps.init()))
 		.pipe(concat('custom.js'))
 		.pipe(gulpif(!isDevelopment, jsmin()))
 		.pipe(rename({ suffix: '.min' }))
 		.pipe(gulpif(isDevelopment, sourcemaps.write()))
 		.pipe(gulp.dest(path.build.js))
+		.pipe(livereload());
 });
 
 // assembly html
@@ -132,7 +131,6 @@ gulp.task('dev:html', function() {
 // assembly images
 gulp.task('dev:img', function(){
 	return gulp.src(path.assets.img)
-		.pipe(changed(path.build.img))
 		.pipe(imagemin({
 			progressive: true,
 			interlaced: true
@@ -143,7 +141,6 @@ gulp.task('dev:img', function(){
 // assembly video
 gulp.task('dev:video', function(){
 	return gulp.src(path.assets.video)
-		.pipe(changed(path.build.video))
 		.pipe(gulp.dest(path.build.video));
 })
 
@@ -185,7 +182,6 @@ gulp.task('dev:svg', function(){
 	    }
 	};
     return gulp.src(path.assets.svg)
-	    .pipe(changed(path.build.img))
         .pipe(svg(svgConfig))
         .pipe(gulp.dest(path.build.img));
 });

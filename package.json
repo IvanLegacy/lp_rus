@@ -22,7 +22,6 @@
     "gulp-autoprefixer": "*",
     "gulp-sourcemaps": "*",
     "gulp-rename": "*",
-    "gulp-changed": "*",
     "gulp-if": "*",
     "gulp-jsmin": "*",
     "gulp-concat": "*",
