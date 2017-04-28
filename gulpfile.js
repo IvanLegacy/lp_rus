@@ -69,7 +69,7 @@ const path = {
 		css: {
 			path: 'assets/scss/vendor/',
 			files: [
-				'node_modules/fullpage.js/dist/owl.carousel.min.css',
+				'node_modules/owl.carousel/dist/assets/owl.carousel.min.css',
 				'node_modules/fullpage.js/dist/jquery.fullpage.css'
 			]
 		}
@@ -87,7 +87,6 @@ const path = {
 // assembly css
 gulp.task('dev:scss', function(){
 	return gulp.src(path.assets.scss)
-		.pipe(changed(path.build.css))
 		.pipe(gulpif(isDevelopment, sourcemaps.init()))
 		.pipe(sass().on('error', sass.logError))
 		.pipe(autoprefixer())
