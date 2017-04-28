@@ -22,7 +22,6 @@ const fileinclude 	= require('gulp-file-include');
 const svg 			= require('gulp-svg-sprite');
 const connect 		= require('gulp-connect');
 const livereload	= require('gulp-livereload');
-const addsrc 		= require('gulp-add-src');
 const del 			= require('del');
 
 // is development
