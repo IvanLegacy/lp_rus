@@ -30,7 +30,7 @@
 	Mixin convert px to rem
 
 */
-@function rem($size) {
+@function r($size) {
 	$remSize: $size / 16;
 	@return #{$remSize}rem;
 }
