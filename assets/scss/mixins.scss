@@ -31,7 +31,7 @@
 
 */
 @function rem($size) {
-	$remSize: $size / 16px;
+	$remSize: $size / 16;
 	@return #{$remSize}rem;
 }
 
@@ -104,4 +104,31 @@
     &:-ms-input-placeholder {
         @content;
     }
+}
+
+/*
+
+	Mixin scrollbar
+
+*/
+
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white, 50%)) {
+	::-webkit-scrollbar {
+		width:  $size;
+		height: $size;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: $foreground-color;
+	}
+
+	::-webkit-scrollbar-track {
+		background: $background-color;
+	}
+
+	// For Internet Explorer
+	body {
+		scrollbar-face-color: $foreground-color;
+		scrollbar-track-color: $background-color;
+	}
 }

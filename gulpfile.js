@@ -15,8 +15,10 @@ const autoprefixer 	= require('gulp-autoprefixer');
 const sourcemaps 	= require('gulp-sourcemaps');
 const rename 		= require('gulp-rename');
 const gulpif 		= require('gulp-if');
-const jsmin 		= require('gulp-jsmin');
-const concat 		= require('gulp-concat');
+const uglify		= require('gulp-uglify');
+const strip			= require('gulp-strip-comments');
+const concat		= require('gulp-concat');
+const changed 		= require('gulp-changed');
 const imagemin 		= require('gulp-imagemin');
 const fileinclude 	= require('gulp-file-include');
 const svg 			= require('gulp-svg-sprite');
@@ -87,6 +89,7 @@ const path = {
 // assembly css
 gulp.task('dev:scss', function(){
 	return gulp.src(path.assets.scss)
+		.pipe(changed(path.build.css))
 		.pipe(gulpif(isDevelopment, sourcemaps.init()))
 		.pipe(sass().on('error', sass.logError))
 		.pipe(autoprefixer())
@@ -103,14 +106,16 @@ gulp.task('dev:js', function(){
 			path.assets.js+'vendor/jquery.min.js',
 			path.assets.js+'vendor/owl.carousel.min.js',
 			path.assets.js+'vendor/scrolloverflow.min.js',
-			path.assets.js+'vendor/jquery.fullPage.min.js',
+			path.assets.js+'vendor/jquery.fullpage.min.js',
 			path.assets.js+'main.js',
 		])
+		.pipe(changed(path.build.js))
 		.pipe(gulpif(isDevelopment, sourcemaps.init()))
 		.pipe(concat('custom.js'))
-		.pipe(gulpif(!isDevelopment, jsmin()))
+		.pipe(gulpif(!isDevelopment, uglify()))
 		.pipe(rename({ suffix: '.min' }))
 		.pipe(gulpif(isDevelopment, sourcemaps.write()))
+		.pipe(strip())
 		.pipe(gulp.dest(path.build.js))
 		.pipe(livereload());
 });
@@ -118,6 +123,7 @@ gulp.task('dev:js', function(){
 // assembly html
 gulp.task('dev:html', function() {
 	return gulp.src(path.assets.pages)
+		.pipe(changed(path.build.base))
 		.pipe(fileinclude({
 			prefix: '@@',
 			basepath: '@file'
@@ -129,6 +135,7 @@ gulp.task('dev:html', function() {
 // assembly images
 gulp.task('dev:img', function(){
 	return gulp.src(path.assets.img)
+		.pipe(changed(path.build.img))
 		.pipe(imagemin({
 			progressive: true,
 			interlaced: true
@@ -151,37 +158,38 @@ gulp.task('dev:fonts', function(){
 // assembly svg 
 gulp.task('dev:svg', function(){
 	var svgConfig = {
-	    shape: {
-	        dimension: {
-	            maxWidth: 30,
-	            maxHeight: 30,
-	            attributes: false
-	        },
-	        spacing: {
-	            padding: 0
-	        },
-	        transform: ['svgo']
-	    },
-	    svg: {
-	        xmlDeclaration      : false,
-	        doctypeDeclaration  : false
-	    },
-	    mode: {
-	        css: false,
-	        view: false,
-	        defs: false,
-	        stack: false,
-	        symbol: {
-	            dest: 'svg',
-	            sprite: 'sprite.svg',
-	            bust: false,
-	            example: true
-	        }
-	    }
+		shape: {
+			dimension: {
+				maxWidth: 30,
+				maxHeight: 30,
+				attributes: false
+			},
+			spacing: {
+				padding: 0
+			},
+			transform: ['svgo']
+		},
+		svg: {
+			xmlDeclaration      : false,
+			doctypeDeclaration  : false
+		},
+		mode: {
+			css: false,
+			view: false,
+			defs: false,
+			stack: false,
+			symbol: {
+				dest: 'svg',
+				sprite: 'sprite.svg',
+				bust: false,
+				example: true
+			}
+		}
 	};
-    return gulp.src(path.assets.svg)
-        .pipe(svg(svgConfig))
-        .pipe(gulp.dest(path.build.img));
+	return gulp.src(path.assets.svg)
+		.pipe(changed(path.assets.svg))
+		.pipe(svg(svgConfig))
+		.pipe(gulp.dest(path.build.img));
 });
 
 /*=====  End of dev tasks  ======*/
