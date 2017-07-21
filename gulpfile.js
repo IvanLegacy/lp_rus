@@ -29,6 +29,9 @@ const del 			= require('del');
 // is development
 const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV == 'development';
 
+var dir = '';
+if (dir !== undefined) dir = process.env.DIR;
+
 // all paths
 const path = {
 	assets: {
@@ -41,13 +44,13 @@ const path = {
 		video: 	'assets/video/**/*'
 	},
 	build: {
-		base:	'build/',
-		fonts: 	'build/fonts/',
-		img: 	'build/img/',
-		js: 	'build/js/',
-		css: 	'build/css/',
-		svg: 	'build/img/svg',
-		video: 	'build/video/'
+		base:	dir+'build/',
+		fonts: 	dir+'build/fonts/',
+		img: 	dir+'build/img/',
+		js: 	dir+'build/js/',
+		css: 	dir+'build/css/',
+		svg: 	dir+'build/img/svg',
+		video: 	dir+'build/video/'
 	},
 	watch: {
 		js: 	'assets/js/**/*.js',
