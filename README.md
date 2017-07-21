@@ -10,7 +10,7 @@ npm install
 
 (Windows)
 ```bash
-set NODE_ENV=prod && gulp 
+set "NODE_ENV=prod" && gulp 
 ```
 
 (Linux)
@@ -22,6 +22,12 @@ NODE_ENV=prod && gulp
 
 ```bash
 gulp
+```
+
+## Чтобы указать свою директорию build, нужно установить путь в переменную окружения DIR
+
+```bash
+DIR=../../folder/ && gulp
 ```
 
 ## Если проект пустой, выполнить
