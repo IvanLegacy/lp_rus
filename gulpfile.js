@@ -24,13 +24,16 @@ const fileinclude 	= require('gulp-file-include');
 const svg 			= require('gulp-svg-sprite');
 const connect 		= require('gulp-connect');
 const livereload	= require('gulp-livereload');
+const install		= require('gulp-install');
 const del 			= require('del');
 
 // is development
 const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV == 'development';
 
-var dir = '';
+var dir;
 if (dir !== undefined) dir = process.env.DIR;
+else dir = '';
+console.log(dir)
 
 // all paths
 const path = {
@@ -68,7 +71,8 @@ const path = {
 				'node_modules/jquery/dist/jquery.min.js',
 				'node_modules/owl.carousel/dist/owl.carousel.min.js',
 				'node_modules/fullpage.js/dist/jquery.fullpage.min.js',
-				'node_modules/fullpage.js/vendors/scrolloverflow.min.js'
+				'node_modules/fullpage.js/vendors/scrolloverflow.min.js',
+				'bower_components/jquery.maskedinput/dist/jquery.maskedinput.min.js'
 			]
 		},
 		css: {
@@ -236,8 +240,16 @@ gulp.task('copy:css', function(){
 		.pipe(gulp.dest(path.modules.css.path));
 });
 
+gulp.task('bower', function(){
+	return gulp.src(['./bower.json'])
+		.pipe(install({
+			allowRoot: true
+		}));
+});
+
 // copy node modules to assets
 gulp.task('copy', gulp.series(
+	'bower',
 	'copy:js',
 	'copy:css'
 ));

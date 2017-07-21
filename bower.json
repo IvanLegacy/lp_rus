@@ -1,0 +1,14 @@
+{
+  "name": "empty_frontend_project_structure",
+  "description": "",
+  "main": [
+    "gulpfile.json"
+  ],
+  "dependencies": {
+    "jquery.maskedinput": "*"
+  },
+  "authors": [
+    "nazar9505"
+  ],
+  "license": "MIT"
+}
