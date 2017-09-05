@@ -3,4 +3,6 @@ node_modules/
 build/
 bower_components/
 .idea/
-npm-debug.log.*
+*.log.*
+package-lock.json
+.DS_Store

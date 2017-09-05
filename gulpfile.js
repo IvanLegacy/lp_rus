@@ -25,6 +25,10 @@ const svg 			= require('gulp-svg-sprite');
 const connect 		= require('gulp-connect');
 const livereload	= require('gulp-livereload');
 const install		= require('gulp-install');
+const plumber		= require('gulp-plumber');
+const notify		= require('gulp-notify');
+const webpackStream	= require('webpack-stream');
+const webpack 		= webpackStream.webpack;
 const del 			= require('del');
 
 // is development
@@ -107,21 +111,63 @@ gulp.task('dev:scss', function(){
 		.pipe(livereload());
 });
 
+// webpack
+gulp.task('dev:webpack', function(callback){
+	var options = {
+		context: __dirname + '/assets/js',
+		entry: {
+			'main': './main'
+		},
+		output: {
+			path: __dirname + './build/js',
+			filename: 'build.min.js',
+			library: 'main',
+			libraryTarget: 'var'
+		},
+		module:  {
+            loaders: [{
+                test:    /\.js$/,
+                exclude: /(node_modules|bower_components)/,
+                loader:  'babel-loader',
+                query: {
+					presets: ['es2015']
+				}
+            }]
+        },
+		plugins: [
+			new webpack.optimize.UglifyJsPlugin({
+		    	include: /\.js$/,
+		    	minimize: true,
+		    	compress: true,
+		    	mangle: false, 
+		    	sourcemap: false
+		    }),
+		    new webpack.optimize.ModuleConcatenationPlugin(),
+		],
+		devtool: isDevelopment ? 'cheap-module-inline-source-map' : null,
+		watch: isDevelopment
+	};
+
+	function done(err, stats){
+		if (err) return;
+		console.log(stats.toString());
+	}
+
+	return gulp.src(path.assets.js)
+		// .pipe(plumber({
+		// 	errorHander: notify.onError()
+		// }))
+		.pipe(webpackStream(options, null, done))
+		// .pipe(gulpif(!isDevelopment, uglify()))
+		.pipe(gulp.dest(path.build.js))
+		.on('data', function(){
+			callback();
+		});
+});
+
 // assembly js
 gulp.task('dev:js', function(){
-	return gulp.src([
-			path.assets.js+'vendor/jquery.min.js',
-			path.assets.js+'vendor/owl.carousel.min.js',
-			path.assets.js+'vendor/scrolloverflow.min.js',
-			path.assets.js+'vendor/jquery.fullpage.min.js',
-			path.assets.js+'main.js',
-		])
-		.pipe(changed(path.build.js))
-		.pipe(gulpif(isDevelopment, sourcemaps.init()))
-		.pipe(concat('custom.js'))
-		.pipe(gulpif(!isDevelopment, uglify()))
-		.pipe(rename({ suffix: '.min' }))
-		.pipe(gulpif(isDevelopment, sourcemaps.write()))
+	return gulp.src(path.build.js+'build.min.js')
 		.pipe(strip())
 		.pipe(gulp.dest(path.build.js))
 		.pipe(livereload());
@@ -130,7 +176,7 @@ gulp.task('dev:js', function(){
 // assembly html
 gulp.task('dev:html', function() {
 	return gulp.src(path.assets.pages)
-		.pipe(changed(path.build.base))
+		// .pipe(changed(path.build.base))
 		.pipe(fileinclude({
 			prefix: '@@',
 			basepath: '@file'
@@ -213,7 +259,10 @@ gulp.task('server', function() {
 // task dev
 gulp.task('dev', gulp.parallel(
 	'dev:scss',
-	'dev:js',
+	gulp.series(
+		'dev:webpack',
+		'dev:js'
+	),
 	'dev:img',
 	'dev:video',
 	'dev:fonts',
@@ -261,7 +310,7 @@ gulp.task('watch', function(){
 	gulp.watch(path.watch.fonts, gulp.series('dev:fonts'));
 	gulp.watch(path.watch.pages, gulp.series('dev:html'));
 	gulp.watch(path.watch.svg, gulp.series('dev:svg', 'dev:html'));
-	gulp.watch(path.watch.js, gulp.series('dev:js'));
+	gulp.watch(path.watch.js, gulp.series('dev:webpack', 'dev:js'));
 	gulp.watch(path.watch.video, gulp.series('dev:video'));
 	gulp.watch(path.watch.img, gulp.series('dev:img'));
 });

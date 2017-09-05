@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/nazar9505/empty_frontend_project_structure#readme",
   "devDependencies": {
+    "babel-core": "*",
+    "babel-loader": "^7.1.1",
     "del": "*",
     "fullpage.js": "*",
     "gulp": "gulpjs/gulp.git#4.0",
@@ -28,8 +30,10 @@
     "gulp-file-include": "*",
     "gulp-if": "*",
     "gulp-imagemin": "*",
-    "gulp-install": "^1.1.0",
+    "gulp-install": "*",
     "gulp-livereload": "*",
+    "gulp-notify": "*",
+    "gulp-plumber": "*",
     "gulp-rename": "*",
     "gulp-sass": "*",
     "gulp-sourcemaps": "*",
@@ -37,6 +41,9 @@
     "gulp-svg-sprite": "*",
     "gulp-svg2string": "*",
     "gulp-uglify": "*",
-    "owl.carousel": "*"
-  }
+    "owl.carousel": "*",
+    "webpack": "^3.*",
+    "webpack-stream": "^4.*"
+  },
+  "dependencies": {}
 }
