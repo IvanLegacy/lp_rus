@@ -30,6 +30,7 @@ const notify		= require('gulp-notify');
 const webpackStream	= require('webpack-stream');
 const webpack 		= webpackStream.webpack;
 const del 			= require('del');
+const AnyBarWebpackPlugin = require('anybar-webpack');
 
 // is development
 const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV == 'development';
@@ -37,7 +38,6 @@ const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV == 'developm
 var dir;
 if (dir !== undefined) dir = process.env.DIR;
 else dir = '';
-console.log(dir)
 
 // all paths
 const path = {
@@ -90,9 +90,6 @@ const path = {
 };
 
 
-
-
-
 /*=================================
 =            dev tasks            =
 =================================*/
@@ -143,6 +140,9 @@ gulp.task('dev:webpack', function(callback){
 		    	sourcemap: false
 		    }),
 		    new webpack.optimize.ModuleConcatenationPlugin(),
+		    new AnyBarWebpackPlugin({
+            	enableNotifications: true
+			})
 		],
 		devtool: isDevelopment ? 'cheap-module-inline-source-map' : null,
 		watch: isDevelopment
@@ -154,11 +154,10 @@ gulp.task('dev:webpack', function(callback){
 	}
 
 	return gulp.src(path.assets.js)
-		// .pipe(plumber({
-		// 	errorHander: notify.onError()
-		// }))
+		.pipe(plumber({
+			errorHander: notify.onError()
+		}))
 		.pipe(webpackStream(options, null, done))
-		// .pipe(gulpif(!isDevelopment, uglify()))
 		.pipe(gulp.dest(path.build.js))
 		.on('data', function(){
 			callback();
