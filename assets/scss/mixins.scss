@@ -11,17 +11,14 @@
 
 */
 @mixin media($media) {
-	@if $media == xs {
-		@media #{$gl-xs} { @content; }
+	@if map-has-key($gl-mq-list, $media) {
+		@media #{map-get($gl-mq-list, $media)} {
+			@content;
+		}
 	}
-	@else if $media == sm {
-		@media #{$gl-sm} { @content; }
-	}
-	@else if $media == md {
-		@media #{$gl-md} { @content; }
-	}
-	@else if $media == lg {
-		@media #{$gl-lg} { @content; }
+	@else {
+		@warn "Unfortunately, no value could be retrieved from `#{$media}`. "
+			+ "Please make sure it is defined in `$breakpoints` map.";
 	}
 }
 
