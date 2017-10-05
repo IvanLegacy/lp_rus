@@ -23,6 +23,8 @@
     "babel-preset-es2015": "^6.24.1",
     "del": "*",
     "fullpage.js": "*",
+    "inputmask": "*",
+    "jquery-validation": "*",
     "gulp": "gulpjs/gulp.git#4.0",
     "gulp-autoprefixer": "*",
     "gulp-changed": "*",

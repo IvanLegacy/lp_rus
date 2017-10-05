@@ -76,7 +76,8 @@ const path = {
 				'node_modules/owl.carousel/dist/owl.carousel.min.js',
 				'node_modules/fullpage.js/dist/jquery.fullpage.min.js',
 				'node_modules/fullpage.js/vendors/scrolloverflow.min.js',
-				'bower_components/jquery.maskedinput/dist/jquery.maskedinput.min.js'
+				'node_modules/inputmask/dist/min/inputmask/jquery.inputmask.min.js',
+				'node_modules/jquery-validation/dist/jquery.validate.min.js'
 			]
 		},
 		css: {
@@ -131,7 +132,7 @@ gulp.task('dev:webpack', function(callback){
 				}
             }]
         },
-		plugins: [
+		plugins: isDevelopment ? [
 			new webpack.optimize.UglifyJsPlugin({
 		    	include: /\.js$/,
 		    	minimize: true,
@@ -143,7 +144,7 @@ gulp.task('dev:webpack', function(callback){
 		    new AnyBarWebpackPlugin({
             	enableNotifications: true
 			})
-		],
+		] : [],
 		devtool: isDevelopment ? 'cheap-module-inline-source-map' : null,
 		watch: isDevelopment
 	};
@@ -166,7 +167,7 @@ gulp.task('dev:webpack', function(callback){
 
 // assembly js
 gulp.task('dev:js', function(){
-	return gulp.src(path.build.js+'build.min.js')
+	return gulp.src([path.assets.js+'*.js', '!'+path.assets.js+'main.js'])
 		.pipe(strip())
 		.pipe(gulp.dest(path.build.js))
 		.pipe(livereload());
