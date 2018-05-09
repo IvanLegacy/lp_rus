@@ -133,16 +133,11 @@ gulp.task('dev:webpack', function(callback){
             }]
         },
 		plugins: isDevelopment ? [
-			new webpack.optimize.UglifyJsPlugin({
-		    	include: /\.js$/,
-		    	minimize: true,
-		    	compress: true,
-		    	mangle: false, 
-		    	sourcemap: false
-		    }),
-		    new webpack.optimize.ModuleConcatenationPlugin(),
-		    new AnyBarWebpackPlugin({
-            	enableNotifications: true
+			new webpack.ProvidePlugin({
+			    'window.jQuery'    : 'jquery',
+			    'window.$'         : 'jquery',
+			    'jQuery'           : 'jquery',
+			    '$'                : 'jquery'
 			})
 		] : [],
 		devtool: isDevelopment ? 'cheap-module-inline-source-map' : null,

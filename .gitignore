@@ -2,6 +2,7 @@
 node_modules/
 build/
 bower_components/
+assets/js/vendor/*
 .idea/
 *.log.*
 package-lock.json

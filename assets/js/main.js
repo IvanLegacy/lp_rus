@@ -1,5 +1,3 @@
-let $ = require('./vendor/jquery.min')
-
 // Uncomment if necessary
 // let fullpage = require('./vendor/jquery.fullpage.min');
 // let masked = require('./vendor/jquery.maskedinput.min');
