@@ -14,7 +14,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const sourcemaps = require('gulp-sourcemaps');
 const rename = require('gulp-rename');
 const gulpif = require('gulp-if');
-const uglify = require('gulp-uglify');
+const cssnano = require('gulp-cssnano');
 const strip = require('gulp-strip-comments');
 const concat = require('gulp-concat');
 const changed = require('gulp-changed');
@@ -29,7 +29,6 @@ const notify = require('gulp-notify');
 const webpackStream = require('webpack-stream');
 const webpack = webpackStream.webpack;
 const del = require('del');
-const AnyBarWebpackPlugin = require('anybar-webpack');
 
 // is development
 const isDevelopment =
@@ -74,7 +73,7 @@ const path = {
 			files: [
 				'node_modules/jquery/dist/jquery.min.js',
 				'node_modules/owl.carousel/dist/owl.carousel.min.js',
-				'node_modules/fullpage.js/dist/jquery.fullpage.min.js',
+				'node_modules/fullpage.js/dist/fullpage.min.js',
 				'node_modules/fullpage.js/vendors/scrolloverflow.min.js',
 				'node_modules/inputmask/dist/min/inputmask/jquery.inputmask.min.js',
 				'node_modules/jquery-validation/dist/jquery.validate.min.js',
@@ -84,7 +83,7 @@ const path = {
 			path: 'assets/scss/vendor/',
 			files: [
 				'node_modules/owl.carousel/dist/assets/owl.carousel.min.css',
-				'node_modules/fullpage.js/dist/jquery.fullpage.css',
+				'node_modules/fullpage.js/dist/fullpage.css',
 			],
 		},
 	},
@@ -102,6 +101,7 @@ gulp.task('dev:scss', function () {
 		.pipe(gulpif(isDevelopment, sourcemaps.init()))
 		.pipe(sass().on('error', sass.logError))
 		.pipe(autoprefixer())
+		.pipe(gulpif(!isDevelopment, cssnano()))
 		.pipe(concat('styles.css'))
 		.pipe(rename({ suffix: '.min' }))
 		.pipe(gulpif(isDevelopment, sourcemaps.write()))
@@ -225,7 +225,7 @@ gulp.task('server', function () {
 	connect.server({
 		host: 'localhost',
 		root: path.build.base,
-		port: 1000,
+		port: 2000,
 	});
 });
 
@@ -279,7 +279,7 @@ gulp.task('watch', function () {
 	gulp.watch(path.watch.fonts, gulp.series('dev:fonts'));
 	gulp.watch(path.watch.pages, gulp.series('dev:html'));
 	gulp.watch(path.watch.svg, gulp.series('dev:svg', 'dev:html'));
-	gulp.watch(path.watch.js, gulp.series('dev:webpack', 'dev:js'));
+	gulp.watch(path.watch.js, gulp.series('dev:js'));
 	gulp.watch(path.watch.video, gulp.series('dev:video'));
 	gulp.watch(path.watch.img, gulp.series('dev:img'));
 });

@@ -2,7 +2,25 @@ const webpackStream = require ('webpack-stream');
 const webpack = webpackStream.webpack;
 
 module.exports = (isDevelopment) => {
+    let plugins = [];
+
+    plugins.push(new webpack.ProvidePlugin({
+        $: 'jquery',
+        '$': 'jquery',
+        jquery: 'jquery',
+        jQuery: 'jquery',
+        'window.jquery': 'jquery',
+        'window.jQuery': 'jquery',
+    }));
+
+    if (!isDevelopment) {
+        plugins.push(new webpack.optimize.UglifyJsPlugin({
+            include: /\.min\.js$/,
+            minimize: true
+        }));
+    }
     return {
+        watch: true,
         context: __dirname + '/assets/js',
         entry: {
             main: './main',
@@ -29,14 +47,7 @@ module.exports = (isDevelopment) => {
                 },
             ],
         },
-        plugins: [
-            new webpack.ProvidePlugin({
-                'window.jQuery': 'jquery',
-                'window.$': 'jquery',
-                jQuery: 'jquery',
-                $: 'jquery',
-            }),
-        ],
+        plugins: plugins,
         devtool: isDevelopment ? 'cheap-module-inline-source-map' : false,
         watch: isDevelopment,
     };

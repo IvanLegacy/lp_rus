@@ -4,8 +4,7 @@
   "description": "``` ruby\r project/\r +--assets/                    # файлы проекта до сборки\r    +--img/                    # изображения до сжатия\r    +--fonts/                  # шрифты\r    +--sass/                   # sass    \r    ¦  +--components/          # блоки sass, библиотеки\r    ¦  +--mixins/              # миксины sass\r    ¦  +--variables.scss       # переменные sass\r    ¦  +--main.scss            # @include components, vendor\r    +--js/                     # js\r    ¦  +--vendor/              # e.g. JQuery\r    ¦  +--components/          # прочие плагины\r    ¦  +--main.js\r    +--svg/\r    +--pages/                  # html\r       +--/blocks              # повторяющиеся блоки (header, footer, ...)\r       +--index.html           # html\r       +--...                 \r +--build/                     # файлы проекта после сборки\r    +--css/               \r    ¦  +--styles.min.css       # минимизированный css\r    +--js/\r    ¦  +--custom.min.js        # минимизированный js\r    +--img/\r    ¦  +--svg/                 # цельный файл svg\r    +--fonts/                  # шрифты\r    +--index.html              # index.html\r    +--...                     # тут же остальные html файлы после сборки\r +--gulpfile.js           \r +--package.json\r +--.gitignore                 # ignore node_modules | ignore build\r ```",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "preinstall": "npm i bower -g"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -23,13 +22,12 @@
     "babel-preset-es2015": "^6.24.1",
     "del": "*",
     "fullpage.js": "*",
-    "inputmask": "*",
-    "jquery-validation": "*",
     "gulp": "gulpjs/gulp.git#4.0",
     "gulp-autoprefixer": "*",
     "gulp-changed": "*",
     "gulp-concat": "*",
     "gulp-connect": "*",
+    "gulp-cssnano": "^2.1.3",
     "gulp-file-include": "*",
     "gulp-if": "*",
     "gulp-imagemin": "*",
@@ -44,14 +42,11 @@
     "gulp-strip-comments": "*",
     "gulp-svg-sprite": "*",
     "gulp-svg2string": "*",
-    "gulp-uglify": "*",
+    "imports-loader": "^0.8.0",
+    "inputmask": "*",
+    "jquery-validation": "*",
     "owl.carousel": "*",
     "webpack": "^3.*",
     "webpack-stream": "^4.*"
-  },
-  "dependencies": {
-    "anybar-webpack": "^1.2.0",
-    "gulp-htmlmin": "^3.0.0",
-    "imports-loader": "^0.8.0"
   }
 }
