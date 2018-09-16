@@ -1,0 +1,18 @@
+.footer{
+    background-color: $color__dark;
+    padding: 17px 0;
+    &__inner{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 14px;
+        color: $color__primary;
+        a{
+            margin-left: 20px;
+        }
+    }
+    &__right{
+        display: flex;
+        align-items: center;
+    }
+}

@@ -5,14 +5,77 @@
 	<title>Document</title>
 	<link rel="stylesheet" type="text/css" href="css/styles.min.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=cyrillic" rel="stylesheet">
+	<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 </head>
 <body>
 	<!-- ============================================================= -->
 
 	@@include('demomenu.html')
 
+	@@include('./partials/modal.html')
+
 	<!-- begin hidden svg -->
 	<div class="hidden">
 		@@include('../../../build/img/svg/sprite.svg')
 	</div>
 	<!-- end hidden svg -->
+
+	<!-- start header -->
+	<div class="header">
+		<div class="row">
+			<div class="header__inner">
+				<a href="#" class="header__logo">
+					<svg>
+						<use xlink:href="#logo"></use>
+					</svg>
+				</a>
+				<div class="header__wrapper">
+					<div class="header__menu-mobile menu js-menu">
+						<a href="#" class="menu__item">О компании</a>
+						<a href="#" class="menu__item">ПРОДУКЦИЯ</a>
+						<a href="#" class="menu__item">Услуги</a>
+						<a href="#" class="menu__item">СЕРТИФИКАТЫ</a>
+						<a href="#" class="menu__item">ОТЗЫВЫ</a>
+						<a href="#" class="menu__item">контакты</a>
+					</div>
+					<div class="header__top">
+						<div class="header__desc">Производство, поставка и обслуживание <br>
+						конвейерных и транспортерных лент <br>
+						и комплектующих в Москве и по россии</div>
+						<div class="header__info">
+							<div class="header__info-block header__info-block--time">
+								<svg>
+									<use xlink:href="#clock"></use>
+								</svg>
+								пн-пт с 09.00 до 17.00
+							</div>
+							<div class="header__info-block header__info-block--phone">
+								<svg>
+									<use xlink:href="#phone"></use>
+								</svg>
+								<a href="tel:88043338284">8 (804) 333-82-84</a>
+							</div>
+						</div>
+					</div>
+					<div class="header__bottom">
+						<div class="header__menu menu">
+							<a href="#" class="menu__item">О компании</a>
+							<a href="#" class="menu__item">ПРОДУКЦИЯ</a>
+							<a href="#" class="menu__item">Услуги</a>
+							<a href="#" class="menu__item">СЕРТИФИКАТЫ</a>
+							<a href="#" class="menu__item">ОТЗЫВЫ</a>
+							<a href="#" class="menu__item">контакты</a>
+						</div>
+						<div class="header__call btn">заказать звонок</div>
+						<div class="header__burger js-burger">
+							<span></span>
+							<span></span>
+							<span></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end header -->

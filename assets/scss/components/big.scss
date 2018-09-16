@@ -1,0 +1,44 @@
+.big{
+    background-size: cover;
+    background-position: center;
+    &__body{
+        display: flex;
+        align-items: center;
+        padding: 60px 0;
+        box-sizing: border-box;
+        @include media(md){
+            flex-direction: column;
+        }
+    }
+    &__title{
+        font-size: 36px;
+        font-weight: bold;
+        color: $color__white;
+        line-height: 44px;
+        @include media(md){
+            width: 100%;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        @include media(sm){
+            font-size: 24px;
+            line-height: 30px;
+        }
+    }
+    &__form{
+        width: 400px;
+        min-width: 400px;
+        .btn{
+            display: block!important;
+        }
+        @include media(md){
+            display: none;
+        }
+    }
+    .btn{
+        display: none;
+        @include media(md){
+            display: block;
+        }
+    }
+}

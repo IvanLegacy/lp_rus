@@ -1,0 +1,94 @@
+.form{
+    background-color: $color__secondary;
+    padding: 30px;
+    box-sizing: border-box;
+    color: $color__white;
+    &--small{
+        padding: 0;
+    }
+    &--light{
+        background-color: $color__light;
+        .form__control{
+            input{
+                border-color: $color__dark;
+                @include placeholder{
+                    color: $color__dark;
+                }
+            }
+        }
+        .form__req{
+            color: $color__dark;
+        }
+        .form__info{
+            color: $color__dark;
+            a{
+                color: $color__primary;
+            }
+        }
+    }
+    &__req{
+        font-size: 12px;
+        color: $color__light--dark;
+        margin-bottom: 20px;
+    }
+    &__title{
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        line-height: 30px;
+        @include media(sm){
+            font-size: 16px;
+        }
+    }
+    &__desc{
+        font-size: 14px;
+        line-height: 20px;
+        margin-bottom: 20px;
+    }
+    &__info{
+        font-size: 12px;
+        color: $color__primary;
+        line-height: 16px;
+        a{
+            color: $color__white;
+        }
+    }
+    &__group{
+        margin-bottom: 20px;
+    }
+    &__control{
+        &--input{
+            input{
+                border: 1px solid $color__white;
+                background-color: transparent;
+                padding: 18px;
+                box-sizing: border-box;
+                font-size: 14px;
+                outline: none;
+                color: $color__white;
+                width: 100%;
+                @include placeholder{
+                    color: $color__light--dark;
+                }
+                &:focus{
+                    border: 1px solid $color__primary;
+                }
+            }
+        }
+        .form__error-label{
+            border: 1px solid $color__danger!important;
+            color: $color__danger!important;
+            @include placeholder{
+                color: $color__danger!important;
+            }
+        }
+    }
+    .btn{
+        &:hover{
+            background-color: $color__third;
+        }
+    }
+    span.form__error-label{
+        display: none!important;
+    }
+}

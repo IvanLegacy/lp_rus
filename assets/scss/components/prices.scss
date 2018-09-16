@@ -1,0 +1,39 @@
+.prices{
+    &__item{
+        display: flex;
+        position: relative;
+        padding-right: 110px;
+        padding-bottom: 15px;
+        margin-bottom: 40px;
+        &::after{
+            content: '';
+            display: block;
+            bottom: 0;
+            position: absolute;
+            height: 4px;
+            background-color: $color__primary;
+        }
+        @for $i from 1 through 100 {
+            &--#{$i}{
+                &::after{
+                    width: #{$i * 1%};
+                }
+            }
+        }
+    }
+    &__numb{
+        font-size: 48px;
+        font-weight: bold;
+        color: $color__secondary;
+        margin-right: 10px;
+        width: 85px;
+        min-width: 85px;
+    }
+    &__desc{
+        margin-top: 3px;
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: 500;
+        line-height: 20px;
+    }
+}

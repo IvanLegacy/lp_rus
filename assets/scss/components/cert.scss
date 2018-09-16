@@ -1,0 +1,49 @@
+.cert{
+    .owl-stage,
+    .owl-item{
+        display: flex;
+        transition: all .2s ease;
+    }
+    .owl-item.center{
+        // transform: scale(1.5);
+        // z-index: 2;
+    }
+    .owl-nav{
+        top: 50%;
+        transform: translateY(-110%);
+    }
+    .owl-item:not(.center){
+        transform: scale(.8);
+    }
+    .owl-item:not(.active){
+        // opacity: 0;
+    }
+    .owl-stage{
+        .owl-item.active:first-of-type{
+            transform: scale(.8);
+        }
+    }
+    &__item{
+        display: flex;
+        // width: max-content;
+        // position: relative;
+        // width: 100%;
+        // img{
+        //     width: auto!important;
+        //     height: 90%;
+        //     &:first-child{
+        //         opacity: 0;
+        //     }
+        //     &:last-child{
+        //         top: 50%;
+        //         left: 50%;
+        //         transform: translate(-50%, -50%);
+        //         position: absolute;
+        //     }
+        // }
+    }
+    &__inner{
+        display: flex;
+        align-items: center;
+    }
+}

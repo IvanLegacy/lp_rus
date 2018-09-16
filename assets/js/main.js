@@ -1,9 +1,23 @@
-// Uncomment if necessary
-// let fullpage = require('./vendor/jquery.fullpage.min');
-// let masked = require('./vendor/jquery.maskedinput.min');
-// let owl = require('./vendor/owl.carousel.min');
-// let scrolloverflow = require('./vendor/scrolloverflow.min');
+window.$ = $;
+window.jQuery = $;
+
+require ('./vendor/jquery.validate.min');
+require('./vendor/owl.carousel.min');
+
+import Carousel from './components/Carousel';
+import Solutions from './components/Solutions';
+import Clients from './components/Clients';
+import Maps from './components/Maps';
+import Forms from './components/Forms';
+import Burger from './components/Burger';
 
 $(function(){
-	console.log("It's working");
+
+	new Carousel();
+	new Solutions();
+	new Clients();
+	new Maps();
+	new Forms();
+	new Burger();
+	
 });

@@ -10,13 +10,27 @@
 @import 'fonts';
 
 @import 'vendor/reset';
-@import 'vendor/gridlex-vars';
 @import 'vendor/gridlex';
 
-// Uncomment if necessary
-// @import 'vendor/owl.carousel.min';
-// @import 'vendor/jquery.fullPage';
+@import 'vendor/owl.carousel.min';
 
 @import 'components/demomenu';
 
 @import 'components/layout';
+
+@import 'components/header';
+@import 'components/menu';
+@import 'components/big';
+@import 'components/form';
+@import 'components/info';
+@import 'components/supplier';
+@import 'components/stock';
+@import 'components/categories';
+@import 'components/slider';
+@import 'components/prices';
+@import 'components/solutions';
+@import 'components/cert';
+@import 'components/clients';
+@import 'components/map';
+@import 'components/footer';
+@import 'components/modal';

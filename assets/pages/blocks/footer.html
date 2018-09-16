@@ -1,4 +1,80 @@
+	<!-- start footer -->
+	<div class="footer">
+		<div class="row">
+			<div class="footer__inner">
+				<div class="footer__left">© 2018, Rusbelt, г. Москва, все права защищены</div>
+				<div class="footer__right">Разработка и дизайн: <a href="https://legacystudio.ru"><img src="img/legacy.png" alt=""></a></div>
+			</div>
+		</div>
+	</div>
+	<!-- end footer -->
+
 	<!-- ============================================================= -->
 	<script type="text/javascript" src="js/build.min.js"></script>
+
+	<script>
+
+		$(function() {
+
+			initForms();
+			
+		})
+
+		function initForms() {
+				$.validator.addMethod("phone", function (phone_number, element) {
+					phone_number = phone_number.replace(/\s+/g, "");
+					return this.optional(element) || phone_number.length > 9 &&
+						phone_number.match(/^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/);
+				}, "Invalid phone number");
+
+				$('.js-form').each(function () {
+
+					$(this).validate({
+						debug: false,
+						errorClass: "form__error-label",
+						errorElement: "span",
+						rules: {
+							test: {
+								required: true,
+								minlength: 4
+							},
+							name: {
+								required: true,
+							},
+							email: {
+								required: true,
+								email: true
+							},
+							phone: {
+								required: true,
+								phone: true
+							}
+						},
+
+						messages: {
+							test: {
+								required: "Это поле обязательно для заполнения",
+								minlength: "Слишком коротко"
+							},
+							name: {
+								required: "Это поле обязательно для заполнения",
+							},
+							email: {
+								required: "Это поле обязательно для заполнения",
+								email: "Некорректный email"
+							},
+							phone: {
+								required: "Это поле обязательно для заполнения",
+								phone: "Некорректный номер телефона"
+							}
+
+						}
+					});
+
+				});
+
+			}
+		
+	</script>
 </body>
 </html>
