@@ -19,5 +19,15 @@ $(function(){
 	new Maps();
 	new Forms();
 	new Burger();
+
+	let stockSlider = $('.js-slider-stock').owlCarousel();
+
+	stockSlider.on('changed.owl.carousel', function(event) {
+		
+		let index = event.property.value;
+		let client = $('.js-slider-stock').find('.slider__item').eq(index).data('client');
+		$('.js-stock-client img').attr('src', client);
+		
+	});
 	
 });

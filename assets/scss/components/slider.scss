@@ -15,6 +15,9 @@
         }
         .cert__inner{
             width: 100%;
+            img{
+                box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.25);
+            }
         }
         .cert__item{
             justify-content: center;
@@ -28,6 +31,11 @@
             justify-content: center;
             align-items: center;
         }
+        .slider__img{
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
         &::after{
             display: block;
             content: '';
@@ -35,7 +43,7 @@
             width: 500%;
             left: -250%;
             height: 140%;
-            top: 25%;
+            top: 40%;
             z-index: -1;
             background-color: $color__light;
         }
@@ -51,7 +59,7 @@
         top: 105px;
         pointer-events: none;
         @include media(sm){
-            top: 140px;
+            top: 150px;
         }
         svg{
             width: 50px;
