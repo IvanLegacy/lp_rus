@@ -1,4 +1,7 @@
 .cert{
+    @include media(md){
+        padding: 40px 0!important;
+    }
     .owl-stage,
     .owl-item{
         display: flex;
@@ -11,6 +14,9 @@
     .owl-nav{
         top: 50%;
         transform: translateY(-110%);
+        @include media(sm){
+            top: 55%;
+        }
     }
     .owl-item:not(.center){
         transform: scale(.8);

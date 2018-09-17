@@ -1,4 +1,45 @@
 .slider{
+    &--stock{
+        display: none;
+        padding: 0 10px;
+        box-sizing: border-box;
+        position: relative;
+        @include media(sm){
+            display: block;
+        }
+        .owl-item{
+            transition: all .2s ease;
+        }
+        .owl-item:not(.center){
+            opacity: 0;
+        }
+        .cert__inner{
+            width: 100%;
+        }
+        .cert__item{
+            justify-content: center;
+        }
+        .owl-stage{
+            display: flex;
+        }
+        .owl-item{
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        &::after{
+            display: block;
+            content: '';
+            position: absolute;
+            width: 500%;
+            left: -250%;
+            height: 140%;
+            top: 25%;
+            z-index: -1;
+            background-color: $color__light;
+        }
+    }
     .owl-stage-outer{
         height: auto!important;
     }
@@ -9,6 +50,9 @@
         justify-content: space-between;
         top: 105px;
         pointer-events: none;
+        @include media(sm){
+            top: 140px;
+        }
         svg{
             width: 50px;
             height: 50px;
@@ -28,7 +72,7 @@
         }
     }
     .owl-dots{
-        margin-top: 50px;
+        margin-top: 30px;
         display: flex;
         justify-content: center;
         .owl-dot{
@@ -38,6 +82,10 @@
             background-color: $color__light--dark;
             margin: 0 5px;
             outline: none;
+            @include media(md){
+                width: 10px;
+                height: 10px;
+            }
             &.active{
                 background-color: $color__secondary;
             }

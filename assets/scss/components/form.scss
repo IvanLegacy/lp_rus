@@ -5,6 +5,12 @@
     color: $color__white;
     &--small{
         padding: 0;
+        @include media(md){
+            display: none;   
+        }
+    }
+    &--2{
+        padding-top: 20px;
     }
     &--light{
         background-color: $color__light;
@@ -34,7 +40,7 @@
     &__title{
         font-size: 24px;
         font-weight: bold;
-        margin-bottom: 20px;
+        margin-bottom: 12px;
         line-height: 30px;
         @include media(sm){
             font-size: 16px;
@@ -42,7 +48,7 @@
     }
     &__desc{
         font-size: 14px;
-        line-height: 20px;
+        line-height: 17px;
         margin-bottom: 20px;
     }
     &__info{
@@ -55,13 +61,16 @@
     }
     &__group{
         margin-bottom: 20px;
+        &--no-bottom{
+            margin-bottom: 4px;
+        }
     }
     &__control{
         &--input{
             input{
                 border: 1px solid $color__white;
                 background-color: transparent;
-                padding: 18px;
+                padding: 15px 18px;
                 box-sizing: border-box;
                 font-size: 14px;
                 outline: none;

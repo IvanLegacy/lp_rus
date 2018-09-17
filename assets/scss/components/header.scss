@@ -187,8 +187,9 @@
             }
         }
         .menu__item{
-            padding: 17px 5px;
             @include media(lg){
+                padding: 17px 5px;
+                padding-bottom: 13px;
                 font-size: 12px;
             }
         }
@@ -203,6 +204,10 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        display: none;
+        @include media(md){
+            display: flex;
+        }
         @include media(sm){
             margin-left: 10px;
         }

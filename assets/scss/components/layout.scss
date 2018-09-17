@@ -55,6 +55,16 @@ html{
 		width: 30px;
 		height: 30px;
 	}
+	&--mobile{
+		display: none;
+		@include media(md){
+			display: block;	
+		}
+	}
+	&--center{
+		margin: auto;
+		padding: 20px 70px;
+	}
 	&--svg{
 		padding-right: 80px;
 		svg{
@@ -98,11 +108,14 @@ html{
 	}
 	&--full{
 		width: 100%;
+		@include media(md){
+			text-align: center;
+		}
 	}
 }
 .pb{
-	@for $i from 10 through 200 {
-		@if $i % 10 == 0 {
+	@for $i from 5 through 200 {
+		@if $i % 5 == 0 {
 			&--#{$i}{
 				padding-bottom: #{$i}px!important;
 			}
@@ -110,8 +123,8 @@ html{
 	}
 }
 .pt{
-	@for $i from 10 through 200 {
-		@if $i % 10 == 0 {
+	@for $i from 5 through 200 {
+		@if $i % 5 == 0 {
 			&--#{$i}{
 				padding-top: #{$i}px!important;
 			}
@@ -137,8 +150,8 @@ html{
 	@include media(sm){
 		margin-bottom: 35px;
 	}
-	@for $i from 10 through 100 {
-		@if $i % 10 == 0 {
+	@for $i from 5 through 200 {
+		@if $i % 5 == 0 {
 			&--#{$i}{
 				margin-bottom: #{$i}px!important;
 				@include media(md){
@@ -148,6 +161,17 @@ html{
 					margin-bottom: 35px!important;
 				}
 			}
+		}
+	}
+	&--desktop{
+		@include media(md){
+			display: none;
+		}
+	}
+	&--mobile{
+		display: none;
+		@include media(md){
+			display: block;
 		}
 	}
 	&--padding{
@@ -202,14 +226,24 @@ html{
 	font-size: 42px;
 	font-weight: bold;
 	color: $color__dark;
-	margin-bottom: 60px;
+	margin-bottom: 55px;
+	@include media(md){
+		font-size: 36px;
+	}
 	@include media(sm){
 		font-size: 24px;
+		margin-bottom: 20px;
 	}
 	&--small{
 		font-size: 24px;
 		line-height: 30px;
 		margin-bottom: 30px;
+		@include media(md){
+			text-align: center;
+			font-size: 14px;
+			line-height: 20px;
+			font-weight: 400;
+		}
 	}
 	&--upper{
 		text-transform: uppercase;

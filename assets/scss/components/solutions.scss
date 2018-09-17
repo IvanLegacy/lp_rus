@@ -2,11 +2,19 @@
     background-size: cover;
     background-position: center;
     color: $color__white;
+    .font--upper{
+        @include media(md){
+            display: none;
+        }
+    }
+    @include media(md){
+        padding: 50px 0!important;
+    }
     &__body{
         position: relative;
     }
     &__items{
-        margin-bottom: 100px;
+        margin-bottom: 40px;
         transition: all .2s ease;
         &--hidden{
             opacity: 0;
@@ -27,6 +35,16 @@
             opacity: 1;
             pointer-events: all;
         }
+        p{
+            @include media(md){
+                font-size: 21px;
+                line-height: 24px;
+            }
+            @include media(sm){
+                margin-bottom: 46px;
+                line-height: 30px;
+            }
+        }
     }
     &__item{
         height: 250px;
@@ -40,5 +58,19 @@
         background-size: cover;
         background-position: center;
         margin-bottom: 50px;
+        @include media(md){
+            font-size: 18px;
+            height: 180px;
+            padding: 20px;
+        }
+        @include media(sm){
+            height: 160px;
+            margin-bottom: 20px;
+        }
+    }
+    .btn{
+        @include media(sm){
+            margin-bottom: 20px;
+        }
     }
 }

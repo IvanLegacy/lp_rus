@@ -7,12 +7,30 @@
         justify-content: space-between;
         font-size: 14px;
         color: $color__primary;
+        @include media(sm){
+            flex-direction: column;
+        }
         a{
             margin-left: 20px;
+        }
+    }
+    span{
+        @include media(sm){
+            display: block;
+            margin-bottom: 10px;
+        }
+    }
+    &__left{
+        @include media(sm){
+            width: 100%;
+            text-align: center;
         }
     }
     &__right{
         display: flex;
         align-items: center;
+        @include media(sm){
+            margin-top: 20px;
+        }
     }
 }

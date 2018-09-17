@@ -1,6 +1,10 @@
 .supplier{
     padding: 50px 0;
     background-color: $color__light;
+    padding-bottom: 100px;
+    @include media(md){
+        padding: 60px 0;
+    }
     &__info{
         display: flex;
         flex-direction: column;
