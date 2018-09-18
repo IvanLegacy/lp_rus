@@ -12,7 +12,10 @@
 	padding: 30px;
     box-sizing: border-box;
     .form{
-        width: 100%;
+		width: 500px;
+		@include media(md){
+			width: 100%;
+		}
     }
 	&--success{
 		.modal__wrapper{
@@ -61,6 +64,8 @@
 	}
 	&__body{
 		box-sizing: border-box;
+		display: flex;
+		justify-content: center;
 		// background: $color__primary--light;
 	}
 	&__close{

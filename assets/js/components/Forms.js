@@ -22,8 +22,13 @@ export default class Forms {
             openModal(target);
         });
 
-        $('body').on('click', '.js-modal-close', function () {
-            closeModal($(this).closest('.modal'));
+        $('body').on('click', '.js-modal-close, .modal__body', function (e) {
+            console.log(e)
+            if ($(e.target).hasClass('modal__body')) {
+                closeModal($(this).closest('.modal'));
+            }else{
+                // closeModal($(this).closest('.modal'));
+            }
         });
 
         $('body').on('click', '.js-hover', function () {
