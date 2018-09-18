@@ -15,6 +15,9 @@ export default class Clients{
                 $(this).addClass('active');
 
                 image.find('img').attr('src', newImage);
+                image.find('img').parent().attr('href', newImage);
+
+                $('.venobox').venobox();
                 
             });
             

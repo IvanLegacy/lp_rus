@@ -3,6 +3,7 @@ window.jQuery = $;
 
 require ('./vendor/jquery.validate.min');
 require('./vendor/owl.carousel.min');
+require('./vendor/venobox');
 
 import Carousel from './components/Carousel';
 import Solutions from './components/Solutions';
@@ -42,5 +43,7 @@ $(function(){
 		$('.js-burger').click();
 		return false;
 	});
+
+	$ ('.venobox').venobox ();
 	
 });

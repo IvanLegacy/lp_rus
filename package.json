@@ -48,5 +48,8 @@
     "owl.carousel": "*",
     "webpack": "^3.*",
     "webpack-stream": "^4.*"
+  },
+  "dependencies": {
+    "venobox": "^1.8.5"
   }
 }
