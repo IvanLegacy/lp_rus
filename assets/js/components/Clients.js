@@ -10,6 +10,10 @@ export default class Clients{
 
                 const newImage = $(this).data('image');
 
+                $(this).closest('.clients').find('.clients__item').removeClass('active');
+
+                $(this).addClass('active');
+
                 image.find('img').attr('src', newImage);
                 
             });

@@ -12,6 +12,7 @@
         transition: all .2s ease;
         box-sizing: border-box;
         padding: 20px;
+        &.active,
         &:hover{
             box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.25);
         }
