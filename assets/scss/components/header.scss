@@ -181,6 +181,10 @@
                 bottom: inherit;
             }
             .menu__item{
+                &:hover{
+                    border-bottom: none;
+                    border-color: transparent;
+                }
                 @include media(md){
                     text-align: center;
                 }
