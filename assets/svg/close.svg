@@ -1,7 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
-  <defs>
-    <style>
-    </style>
-  </defs>
-  <path id="Path_105" data-name="Path 105" class="cls-1" d="M0,0V30H30V0ZM23.188,21.625,21.75,23.062l-6.687-6.75-6.687,6.75L6.937,21.625l6.75-6.688-6.75-6.75L8.375,6.75l6.688,6.75L21.75,6.75l1.438,1.438L16.5,14.938Zm0,0"/>
+<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M19.5353 8.89057L8.92879 19.4971L10.5029 21.0712L21.1094 10.4647L19.5353 8.89057Z" fill="white"/>
+<path d="M10.5029 8.9298L8.92878 10.5039L19.5353 21.1104L21.1094 19.5363L10.5029 8.9298Z" fill="white"/>
+<path d="M30 30H0V0H30V30ZM2.12014 27.8799H27.8799V2.12014H2.12014V27.8799Z" fill="white"/>
 </svg>

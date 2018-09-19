@@ -10,6 +10,22 @@
             display: none;   
         }
     }
+    &--success{
+        padding-top: 60px;
+        padding-bottom: 60px;
+		.form__inner{
+			display: none;
+		}
+		.form__success{
+			display: block;
+        }
+        p{
+            margin-bottom: 50px;
+        }
+	}
+	&__success{
+		display: none;
+	}
     &--2{
         padding-top: 20px;
     }

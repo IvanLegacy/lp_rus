@@ -47,5 +47,26 @@ $(function(){
 	});
 
 	$ ('.venobox').venobox ();
+
+	var header = $(".header");
+	var sticky = $('.header__top').outerHeight();
+	
+	var sticky = $('.header__top').outerHeight();
+	$(window).resize(function(){
+		sticky = $('.header__top').outerHeight();
+		scroll();
+	})
+
+	scroll();
+	
+	function scroll(){
+		$(window).scroll(function() {
+			if (window.pageYOffset > sticky) {
+				header.addClass("header--sticky");
+			} else {
+				header.removeClass("header--sticky");
+			}
+		});
+	}
 	
 });

@@ -3,41 +3,47 @@
         <div class="modal__inner">
             <div class="modal__header"></div>
             <div class="modal__body">
-                <form class="form js-form">
+                <form class="form js-form form--success">
                     <div class="modal__close js-modal-close">
                         <svg class="close">
                             <use xlink:href="#close"></use>
                         </svg>
                     </div>
-                    <div class="form__title">
-                        Получите полный прайс-лист
-                        и бесплатную консультацию наших экспертов
+                    <div class="form__success">
+                        <p class="text-center">Ваша заявка отправлена. В ближайшее время на специалисты свяжутся с вами</p>
+                        <div class="btn btn--full js-modal-close">ОК</div>
                     </div>
-                    <div class="form__desc">
-                        Мы вышлем вам прайс-лист с ценами на нашу продукцию и проконсультируем по вопросам подбора
-                    </div>
-                    <div class="form__body">
-                        <div class="form__group">
-                            <div class="form__control form__control--input">
-                                <input type="text" name="name" placeholder="Имя *">
+                    <div class="form__inner">
+                        <div class="form__title">
+                            Получите полный прайс-лист
+                            и бесплатную консультацию наших экспертов
+                        </div>
+                        <div class="form__desc">
+                            Мы вышлем вам прайс-лист с ценами на нашу продукцию и проконсультируем по вопросам подбора
+                        </div>
+                        <div class="form__body">
+                            <div class="form__group">
+                                <div class="form__control form__control--input">
+                                    <input type="text" name="name" placeholder="Имя *">
+                                </div>
+                            </div>
+                            <div class="form__group">
+                                <div class="form__control form__control--input">
+                                    <input type="text" name="phone" placeholder="Номер телефона *">
+                                </div>
+                            </div>
+                            <div class="form__group">
+                                <div class="form__control form__control--input">
+                                    <input type="email" name="email" placeholder="Электронная почта">
+                                </div>
+                            </div>
+                            <div class="form__group">
+                                <button class="btn btn--full" type="submit">получить прайс</button>
                             </div>
                         </div>
-                        <div class="form__group">
-                            <div class="form__control form__control--input">
-                                <input type="text" name="phone" placeholder="Номер телефона *">
-                            </div>
+                        <div class="form__info">
+                            Нажимая кнопку, вы даете согласие на обработку <a href="#">персональных данных</a>
                         </div>
-                        <div class="form__group">
-                            <div class="form__control form__control--input">
-                                <input type="email" name="email" placeholder="Электронная почта">
-                            </div>
-                        </div>
-                        <div class="form__group">
-                            <button class="btn btn--full" type="submit">получить прайс</button>
-                        </div>
-                    </div>
-                    <div class="form__info">
-                        Нажимая кнопку, вы даете согласие на обработку <a href="#">персональных данных</a>
                     </div>
                 </form>
                 
