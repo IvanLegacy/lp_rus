@@ -30,6 +30,9 @@ export default class Forms {
                 // closeModal($(this).closest('.modal'));
             }
         });
+        $('body').on('click', '.js-modal-close', function (e) {
+            closeModal($(this).closest('.modal'));
+        });
 
         $('body').on('click', '.js-hover', function () {
             closeModal($('.js-modal.opened'));

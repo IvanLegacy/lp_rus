@@ -40,7 +40,9 @@ $(function(){
 				scrollTop: scrollPoint
 			}, 500);
 		}
-		$('.js-burger').click();
+		if($('.js-menu').hasClass('menu--visible')){
+			$('.js-burger').click();
+		}
 		return false;
 	});
 

@@ -3,6 +3,7 @@
     padding: 30px;
     box-sizing: border-box;
     color: $color__white;
+    position: relative;
     &--small{
         padding: 0;
         @include media(md){

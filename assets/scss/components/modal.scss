@@ -75,7 +75,12 @@
         z-index: 4;
         cursor: pointer;
         width: 30px;
-        height: 30px;
+		height: 30px;
+		svg{
+			width: 30px;
+			height: 30px;
+			fill: $color__primary;
+		}
 	}
 	.btn{
 		font-size: 18px;
