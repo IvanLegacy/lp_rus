@@ -82,6 +82,13 @@ html{
 			background-color: $color__third!important;
 		}
 	}
+	&--white{
+		border: 1px solid $color__white;
+		&:hover{
+			background-color: $color__white!important;
+			color: $color__primary;
+		}
+	}
 	&--secondary{
 		background-color: $color__secondary;
 		svg{
