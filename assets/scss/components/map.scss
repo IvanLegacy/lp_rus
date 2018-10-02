@@ -55,7 +55,7 @@
         width: 100%;
         height: 92px;
         margin-bottom: 20px;
-        @include media(sm){
+        @include media(xs){
             height: 57px;
             width: 110px;
             margin-right: 15px;
@@ -71,12 +71,13 @@
         background-color: $color__primary;
         height: min-content;
         pointer-events: all;
-        @include media(sm){
+        @include media(xs){
             display: flex;
             width: 100%;
+            flex-wrap: wrap;
         }
         p{
-            @include media(sm){
+            @include media(xs){
                 display: none;
             }
         }
@@ -115,6 +116,14 @@
             @include media(sm){
                 margin-right: 10px;
             }
+        }
+    }
+    &__top{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        @include media(xs){
+            flex-direction: row;
         }
     }
     &__btn{

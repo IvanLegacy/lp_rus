@@ -5,7 +5,7 @@
     &--visible{
         opacity: 1;
         pointer-events: all!important;
-        z-index: 2;
+        z-index: 3;
         background-color: $color__dark;
         &::after{
             content: '';
