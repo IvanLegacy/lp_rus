@@ -6,7 +6,6 @@
     &__item{
         display: flex;
         position: relative;
-        padding-right: 110px;
         padding-bottom: 15px;
         margin-bottom: 20px;
         @include media(md){
@@ -35,9 +34,7 @@
         font-size: 72px;
         font-weight: bold;
         color: $color__secondary;
-        margin-right: 10px;
-        width: 138px;
-        min-width: 138px;
+        margin-right: 30px;
         @include media(md){
             font-size: 60px;
             width: 110px;
